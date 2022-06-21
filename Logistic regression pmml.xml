@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+<PMML version="4.4.1" xmlns="http://www.dmg.org/PMML-4_4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.dmg.org/PMML-4_4 http://www.dmg.org/pmml/v4-4/pmml-4-4.xsd">
+ <Header copyright="Copyright (c) 2022 Administrator" description="Generalized Linear Regression Model">
+  <Extension name="user" value="Administrator" extender="SoftwareAG PMML Generator"/>
+  <Application name="SoftwareAG PMML Generator" version="2.4.0"/>
+  <Timestamp>2022-06-20 21:11:41</Timestamp>
+ </Header>
+ <DataDictionary numberOfFields="16">
+  <DataField name="cachexia" optype="categorical" dataType="string">
+   <Value value="no"/>
+   <Value value="yes"/>
+  </DataField>
+  <DataField name="age" optype="continuous" dataType="double"/>
+  <DataField name="sex" optype="categorical" dataType="string">
+   <Value value="female"/>
+   <Value value="male"/>
+  </DataField>
+  <DataField name="cancer.type" optype="categorical" dataType="string">
+   <Value value="GI"/>
+   <Value value="I breast"/>
+   <Value value="other"/>
+   <Value value="respiratory"/>
+  </DataField>
+  <DataField name="bmi" optype="continuous" dataType="double"/>
+  <DataField name="ASMI" optype="continuous" dataType="double"/>
+  <DataField name="anorexia" optype="categorical" dataType="string">
+   <Value value="no"/>
+   <Value value="yes"/>
+  </DataField>
+  <DataField name="vomit" optype="categorical" dataType="string">
+   <Value value="no"/>
+   <Value value="yes"/>
+  </DataField>
+  <DataField name="diarrhea" optype="categorical" dataType="string">
+   <Value value="no"/>
+   <Value value="yes"/>
+  </DataField>
+  <DataField name="early.satiety" optype="categorical" dataType="string">
+   <Value value="no"/>
+   <Value value="yes"/>
+  </DataField>
+  <DataField name="abdominal.pain" optype="categorical" dataType="string">
+   <Value value="no"/>
+   <Value value="yes"/>
+  </DataField>
+  <DataField name="other.eating.symptoms" optype="categorical" dataType="string">
+   <Value value="no"/>
+   <Value value="yes"/>
+  </DataField>
+  <DataField name="direct.bilirubin" optype="continuous" dataType="double"/>
+  <DataField name="ast" optype="continuous" dataType="double"/>
+  <DataField name="hemoglobin" optype="continuous" dataType="double"/>
+  <DataField name="plt" optype="continuous" dataType="double"/>
+ </DataDictionary>
+ <GeneralRegressionModel modelName="General_Regression_Model" modelType="generalizedLinear" functionName="classification" algorithmName="glm" distribution="binomial" linkFunction="logit">
+  <MiningSchema>
+   <MiningField name="cachexia" usageType="predicted" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="age" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="sex" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="cancer.type" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="bmi" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="ASMI" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="anorexia" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="vomit" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="diarrhea" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="early.satiety" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="abdominal.pain" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="other.eating.symptoms" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="direct.bilirubin" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="ast" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="hemoglobin" usageType="active" invalidValueTreatment="returnInvalid"/>
+   <MiningField name="plt" usageType="active" invalidValueTreatment="returnInvalid"/>
+  </MiningSchema>
+  <Output>
+   <OutputField name="Probability_yes" targetField="cachexia" feature="probability" value="yes" optype="continuous" dataType="double"/>
+   <OutputField name="Predicted_cachexia" feature="predictedValue" optype="categorical" dataType="string"/>
+  </Output>
+  <ParameterList>
+   <Parameter name="p0" label="(Intercept)"/>
+   <Parameter name="p1" label="age"/>
+   <Parameter name="p2" label="sexmale"/>
+   <Parameter name="p3" label="cancer.typeI breast"/>
+   <Parameter name="p4" label="cancer.typeother"/>
+   <Parameter name="p5" label="cancer.typerespiratory"/>
+   <Parameter name="p6" label="bmi"/>
+   <Parameter name="p7" label="ASMI"/>
+   <Parameter name="p8" label="anorexiayes"/>
+   <Parameter name="p9" label="vomityes"/>
+   <Parameter name="p10" label="diarrheayes"/>
+   <Parameter name="p11" label="early.satietyyes"/>
+   <Parameter name="p12" label="abdominal.painyes"/>
+   <Parameter name="p13" label="other.eating.symptomsyes"/>
+   <Parameter name="p14" label="direct.bilirubin"/>
+   <Parameter name="p15" label="ast"/>
+   <Parameter name="p16" label="hemoglobin"/>
+   <Parameter name="p17" label="plt"/>
+  </ParameterList>
+  <FactorList>
+   <Predictor name="sex"/>
+   <Predictor name="cancer.type"/>
+   <Predictor name="anorexia"/>
+   <Predictor name="vomit"/>
+   <Predictor name="diarrhea"/>
+   <Predictor name="early.satiety"/>
+   <Predictor name="abdominal.pain"/>
+   <Predictor name="other.eating.symptoms"/>
+  </FactorList>
+  <CovariateList>
+   <Predictor name="age"/>
+   <Predictor name="bmi"/>
+   <Predictor name="ASMI"/>
+   <Predictor name="direct.bilirubin"/>
+   <Predictor name="ast"/>
+   <Predictor name="hemoglobin"/>
+   <Predictor name="plt"/>
+  </CovariateList>
+  <PPMatrix>
+   <PPCell value="1" predictorName="age" parameterName="p1"/>
+   <PPCell value="male" predictorName="sex" parameterName="p2"/>
+   <PPCell value="I breast" predictorName="cancer.type" parameterName="p3"/>
+   <PPCell value="other" predictorName="cancer.type" parameterName="p4"/>
+   <PPCell value="respiratory" predictorName="cancer.type" parameterName="p5"/>
+   <PPCell value="1" predictorName="bmi" parameterName="p6"/>
+   <PPCell value="1" predictorName="ASMI" parameterName="p7"/>
+   <PPCell value="yes" predictorName="anorexia" parameterName="p8"/>
+   <PPCell value="yes" predictorName="vomit" parameterName="p9"/>
+   <PPCell value="yes" predictorName="diarrhea" parameterName="p10"/>
+   <PPCell value="yes" predictorName="early.satiety" parameterName="p11"/>
+   <PPCell value="yes" predictorName="abdominal.pain" parameterName="p12"/>
+   <PPCell value="yes" predictorName="other.eating.symptoms" parameterName="p13"/>
+   <PPCell value="1" predictorName="direct.bilirubin" parameterName="p14"/>
+   <PPCell value="1" predictorName="ast" parameterName="p15"/>
+   <PPCell value="1" predictorName="hemoglobin" parameterName="p16"/>
+   <PPCell value="1" predictorName="plt" parameterName="p17"/>
+  </PPMatrix>
+  <ParamMatrix>
+   <PCell targetCategory="yes" parameterName="p0" df="1" beta="7.31710263273753"/>
+   <PCell targetCategory="yes" parameterName="p1" df="1" beta="-0.00832021389038556"/>
+   <PCell targetCategory="yes" parameterName="p2" df="1" beta="1.2731254173684"/>
+   <PCell targetCategory="yes" parameterName="p3" df="1" beta="-0.826209952313704"/>
+   <PCell targetCategory="yes" parameterName="p4" df="1" beta="-0.650316801634311"/>
+   <PCell targetCategory="yes" parameterName="p5" df="1" beta="-0.659034600715083"/>
+   <PCell targetCategory="yes" parameterName="p6" df="1" beta="-0.0911816751769535"/>
+   <PCell targetCategory="yes" parameterName="p7" df="1" beta="-0.780633040806806"/>
+   <PCell targetCategory="yes" parameterName="p8" df="1" beta="0.639595222080237"/>
+   <PCell targetCategory="yes" parameterName="p9" df="1" beta="0.539248899450433"/>
+   <PCell targetCategory="yes" parameterName="p10" df="1" beta="0.49149938367275"/>
+   <PCell targetCategory="yes" parameterName="p11" df="1" beta="0.506862228207275"/>
+   <PCell targetCategory="yes" parameterName="p12" df="1" beta="0.44468834094045"/>
+   <PCell targetCategory="yes" parameterName="p13" df="1" beta="0.480050225942306"/>
+   <PCell targetCategory="yes" parameterName="p14" df="1" beta="0.00784021282154963"/>
+   <PCell targetCategory="yes" parameterName="p15" df="1" beta="-0.00150323875565651"/>
+   <PCell targetCategory="yes" parameterName="p16" df="1" beta="-0.00614080928398471"/>
+   <PCell targetCategory="yes" parameterName="p17" df="1" beta="0.00146390342529086"/>
+  </ParamMatrix>
+ </GeneralRegressionModel>
+</PMML>
